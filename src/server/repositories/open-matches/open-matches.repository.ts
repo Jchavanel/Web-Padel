@@ -6,7 +6,7 @@ export class OpenMatchesRepository {
       {
         id: "30000000-0000-0000-0000-000000000001",
         startsAt: "2026-04-12T18:00:00+01:00",
-        courtName: "Pista 3",
+        courtName: "Outdoor Sunset",
         levelRange: "3.0 - 3.5",
         category: "Masculino",
         playersJoined: 3,
@@ -17,7 +17,7 @@ export class OpenMatchesRepository {
       {
         id: "30000000-0000-0000-0000-000000000002",
         startsAt: "2026-04-12T20:00:00+01:00",
-        courtName: "Pista 1",
+        courtName: "Pista Central",
         levelRange: "2.5 - 3.0",
         category: "Mixto",
         playersJoined: 2,

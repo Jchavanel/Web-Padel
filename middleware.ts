@@ -9,10 +9,7 @@ const PROTECTED_PREFIXES = [
   "/recepcion",
   "/reservas",
   "/cobros",
-  "/configuracion",
-  "/tarifas",
-  "/usuarios",
-  "/pistas"
+  "/admin"
 ];
 
 export function middleware(request: NextRequest) {

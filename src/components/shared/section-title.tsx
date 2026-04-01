@@ -1,13 +1,23 @@
+import { cn } from "@/lib/utils/cn";
+
 interface SectionTitleProps {
   title: string;
   description?: string;
+  tone?: "default" | "inverse";
+  className?: string;
 }
 
-export function SectionTitle({ title, description }: SectionTitleProps) {
+export function SectionTitle({ title, description, tone = "default", className }: SectionTitleProps) {
   return (
-    <div className="space-y-1">
-      <h2 className="text-xl font-semibold text-slate-900">{title}</h2>
-      {description ? <p className="text-sm text-slate-600">{description}</p> : null}
+    <div className={cn("space-y-1", className)}>
+      <h2 className={cn("text-xl font-semibold", tone === "default" ? "text-slate-900" : "text-white")}>
+        {title}
+      </h2>
+      {description ? (
+        <p className={cn("text-sm", tone === "default" ? "text-slate-600" : "text-slate-300")}>
+          {description}
+        </p>
+      ) : null}
     </div>
   );
 }

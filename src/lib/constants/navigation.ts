@@ -1,8 +1,12 @@
 export const publicNavigation = [
   { href: "/", label: "Inicio" },
-  { href: "/disponibilidad", label: "Disponibilidad" },
-  { href: "/precios", label: "Precios" },
-  { href: "/partidos", label: "Partidos" }
+  { href: "/admin/pistas", label: "Pistas" },
+  { href: "/torneos", label: "Torneos" },
+  { href: "/eventos", label: "Eventos" },
+  { href: "/escuela", label: "Escuela" },
+  { href: "/precios", label: "Tarifas" },
+  { href: "/club", label: "Club" },
+  { href: "/contacto", label: "Contacto" }
 ];
 
 export const playerNavigation = [
@@ -19,8 +23,8 @@ export const staffNavigation = [
 ];
 
 export const adminNavigation = [
-  { href: "/configuracion", label: "Configuración" },
-  { href: "/tarifas", label: "Tarifas" },
-  { href: "/usuarios", label: "Usuarios" },
-  { href: "/pistas", label: "Pistas" }
+  { href: "/admin/configuracion", label: "Configuración" },
+  { href: "/admin/tarifas", label: "Tarifas" },
+  { href: "/admin/usuarios", label: "Usuarios" },
+  { href: "/admin/pistas", label: "Pistas" }
 ];

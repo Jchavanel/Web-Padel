@@ -5,7 +5,7 @@ export class ReservationsRepository {
     return [
       {
         courtId: "10000000-0000-0000-0000-000000000001",
-        courtName: "Pista 1",
+        courtName: "Pista Central",
         slots: [
           { time: "17:00", status: "occupied" },
           { time: "17:30", status: "occupied" },
@@ -16,7 +16,7 @@ export class ReservationsRepository {
       },
       {
         courtId: "10000000-0000-0000-0000-000000000002",
-        courtName: "Pista 2",
+        courtName: "Indoor Pro 2",
         slots: [
           { time: "17:00", status: "free" },
           { time: "17:30", status: "free" },
@@ -27,7 +27,7 @@ export class ReservationsRepository {
       },
       {
         courtId: "10000000-0000-0000-0000-000000000003",
-        courtName: "Pista 3",
+        courtName: "Outdoor Sunset",
         slots: [
           { time: "17:00", status: "free" },
           { time: "17:30", status: "free" },

@@ -15,7 +15,7 @@ export function DashboardShell({ title, children }: DashboardShellProps) {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link href="/" className="font-semibold">
-            Padel Club MVP
+            Padel District Club
           </Link>
           <Link href="/" className="text-sm text-slate-600">
             Volver al sitio
@@ -43,7 +43,7 @@ export function DashboardShell({ title, children }: DashboardShellProps) {
           <div>
             <h1 className="text-3xl font-semibold text-slate-900">{title}</h1>
             <p className="mt-2 text-sm text-slate-600">
-              Base técnica inicial del área privada y operativa.
+              Área privada preparada para operación diaria, reservas y gestión del club.
             </p>
           </div>
           {children}

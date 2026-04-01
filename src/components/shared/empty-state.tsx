@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 interface EmptyStateProps {
   title: string;
@@ -16,8 +16,8 @@ export function EmptyState({ title, description, ctaHref, ctaLabel }: EmptyState
       <p className="mt-2 text-sm text-slate-600">{description}</p>
       {ctaHref && ctaLabel ? (
         <div className="mt-4">
-          <Link href={ctaHref}>
-            <Button>{ctaLabel}</Button>
+          <Link href={ctaHref} className={buttonVariants()}>
+            {ctaLabel}
           </Link>
         </div>
       ) : null}

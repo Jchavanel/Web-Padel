@@ -8,7 +8,7 @@ export function getDemoSessionUser(): SessionUser | null {
   return {
     id: "11111111-1111-1111-1111-111111111111",
     fullName: "Usuario demo",
-    email: "demo@club.test",
+    email: "hola@padeldistrictclub.com",
     role: "admin"
   };
 }

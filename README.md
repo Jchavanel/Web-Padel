@@ -1,6 +1,6 @@
-# Padel Club MVP Scaffold
+# Padel District Club Web
 
-Base técnica inicial para una web de clubes de pádel construida con Next.js (App Router), TypeScript y Supabase.
+Base comercial y operativa para un club de pádel construida con Next.js (App Router), TypeScript y Supabase.
 
 ## Incluye
 
