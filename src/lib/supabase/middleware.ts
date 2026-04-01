@@ -5,13 +5,13 @@ import { clientEnv } from "@/lib/env/client";
 export function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
-  if (!clientEnv.NEXT_PUBLIC_SUPABASE_URL || !clientEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  if (!clientEnv.NEXT_PUBLIC_SUPABASE_URL || !clientEnv.NEXT_PUBLIC_SUPABASE_KEY) {
     return response;
   }
 
   const supabase = createServerClient(
     clientEnv.NEXT_PUBLIC_SUPABASE_URL,
-    clientEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    clientEnv.NEXT_PUBLIC_SUPABASE_KEY,
     {
       cookies: {
         get(name: string) {

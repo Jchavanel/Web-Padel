@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { updateSession } from "@/lib/supabase/middleware";
 
 const PROTECTED_PREFIXES = [
   "/mi-panel",
@@ -17,14 +18,15 @@ const PROTECTED_PREFIXES = [
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const isProtected = PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+  const response = updateSession(request);
 
   if (!isProtected) {
-    return NextResponse.next();
+    return response;
   }
 
   const authEnabled = process.env.ENABLE_DEMO_AUTH === "true";
   if (!authEnabled) {
-    return NextResponse.next();
+    return response;
   }
 
   const demoSession = request.cookies.get("demo-session");
@@ -34,7 +36,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
