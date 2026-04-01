@@ -1,6 +1,6 @@
 export const publicNavigation = [
   { href: "/", label: "Inicio" },
-  { href: "/admin/pistas", label: "Pistas" },
+  { href: "/pistas", label: "Pistas" },
   { href: "/torneos", label: "Torneos" },
   { href: "/eventos", label: "Eventos" },
   { href: "/escuela", label: "Escuela" },
