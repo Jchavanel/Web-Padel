@@ -15,21 +15,24 @@ export default function HomePage() {
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="hero-panel overflow-hidden rounded-[2rem] p-8 text-white shadow-2xl shadow-slate-950/20 md:p-10">
             <div className="max-w-2xl space-y-6">
-              <Badge className="bg-emerald-400/15 text-emerald-100">Club · torneos · eventos · reservas</Badge>
+              <Badge className="bg-emerald-400/15 text-emerald-100">Pádel, escuela y eventos en un mismo club</Badge>
               <div className="space-y-4">
                 <p className="text-sm uppercase tracking-[0.25em] text-emerald-200">{content.city}</p>
-                <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">
-                  {content.tagline}
-                </h1>
-                <p className="max-w-xl text-base leading-7 text-slate-300 md:text-lg">
-                  {content.heroDescription}
-                </p>
+                <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">{content.tagline}</h1>
+                <p className="max-w-xl text-base leading-7 text-slate-300 md:text-lg">{content.heroDescription}</p>
               </div>
               <div className="flex flex-wrap gap-3">
                 <Link href="/disponibilidad" className={buttonVariants({ size: "lg" })}>
                   Reservar pista
                 </Link>
-                <Link href="/torneos" className={buttonVariants({ variant: "outline", size: "lg", className: "border-white/15 bg-white/5 text-white hover:bg-white/10" })}>
+                <Link
+                  href="/torneos"
+                  className={buttonVariants({
+                    variant: "outline",
+                    size: "lg",
+                    className: "border-white/15 bg-white/5 text-white hover:bg-white/10"
+                  })}
+                >
                   Ver torneos
                 </Link>
               </div>
@@ -47,9 +50,9 @@ export default function HomePage() {
           <div className="grid gap-5">
             <Card className="poster-glow overflow-hidden border-0 p-0 text-white">
               <div className="space-y-4 p-6 md:p-7">
-                <Badge className="bg-white/10 text-white">Cartel destacado</Badge>
+                <Badge className="bg-white/10 text-white">Torneo destacado</Badge>
                 <div className="space-y-2">
-                  <p className="text-xs uppercase tracking-[0.35em] text-emerald-200">Torneo del mes</p>
+                  <p className="text-xs uppercase tracking-[0.35em] text-emerald-200">Open del mes</p>
                   <h2 className="text-3xl font-semibold">{content.tournaments[0]?.title}</h2>
                 </div>
                 <p className="max-w-md text-sm leading-6 text-slate-200">{content.tournaments[0]?.description}</p>
@@ -63,8 +66,11 @@ export default function HomePage() {
                     <p className="mt-2 font-medium">{content.tournaments[0]?.prize}</p>
                   </div>
                 </div>
-                <Link href="/torneos" className={buttonVariants({ variant: "outline", className: "border-white/15 bg-white/5 text-white hover:bg-white/10" })}>
-                  Descubrir calendario
+                <Link
+                  href="/torneos"
+                  className={buttonVariants({ variant: "outline", className: "border-white/15 bg-white/5 text-white hover:bg-white/10" })}
+                >
+                  Ver torneo
                 </Link>
               </div>
             </Card>
@@ -73,11 +79,11 @@ export default function HomePage() {
               <Card className="space-y-3">
                 <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                   <CalendarDays className="h-4 w-4 text-brand" />
-                  Eventos especiales
+                  Eventos del club
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">Agenda viva todo el mes</h3>
+                <h3 className="text-xl font-semibold text-slate-900">Un club activo toda la semana</h3>
                 <p className="text-sm leading-6 text-slate-600">
-                  Americanos, clinics, activaciones y formatos sociales que llenan pistas fuera del horario tradicional.
+                  Americanos, clinics, propuestas familiares y eventos especiales para que siempre tengas un motivo para volver.
                 </p>
                 <Link href="/eventos" className="inline-flex items-center gap-2 text-sm font-medium text-brand">
                   Ver agenda <ArrowRight className="h-4 w-4" />
@@ -88,12 +94,12 @@ export default function HomePage() {
                   <Users className="h-4 w-4 text-brand" />
                   Escuela y comunidad
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">Entrena, compite y fideliza</h3>
+                <h3 className="text-xl font-semibold text-slate-900">Entrena, mejora y compite</h3>
                 <p className="text-sm leading-6 text-slate-600">
-                  Programas por niveles, escuela junior y oferta continua para convertir visitas en clientes recurrentes.
+                  Programas por niveles, escuela junior y clases para jugadores que quieren aprender, progresar y disfrutar más del juego.
                 </p>
                 <Link href="/escuela" className="inline-flex items-center gap-2 text-sm font-medium text-brand">
-                  Explorar escuela <ArrowRight className="h-4 w-4" />
+                  Ver escuela <ArrowRight className="h-4 w-4" />
                 </Link>
               </Card>
             </div>
@@ -103,8 +109,8 @@ export default function HomePage() {
 
       <section className="public-section space-y-6 py-10">
         <SectionTitle
-          title="Una web comercial y operativa en el mismo producto"
-          description="La capa pública vende el club; la capa operativa convierte interés en reservas, actividad y recurrencia."
+          title="Todo lo que puedes hacer en Padel District Club"
+          description="Reserva pista, compite en torneos, apúntate a eventos y encuentra una escuela adaptada a tu nivel."
         />
         <div className="grid gap-6 lg:grid-cols-3">
           {content.quickLinks.map((item) => (
@@ -127,14 +133,14 @@ export default function HomePage() {
       <section className="public-section grid gap-8 py-10 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="space-y-5">
           <SectionTitle
-            title="Pistas con identidad propia"
-            description="No se trata solo de mostrar huecos libres. Cada pista puede vender una experiencia concreta: torneo, entrenamiento, social o premium."
+            title="Pistas pensadas para cada tipo de jugador"
+            description="Desde nuestra pista central para torneos y exhibiciones hasta espacios indoor para entrenar con regularidad o pistas sociales para planes afterwork."
           />
           <div className="grid gap-4">
             {[
               { icon: Trophy, text: "Pistas preparadas para torneos, clinics y exhibiciones." },
-              { icon: Clock3, text: "Franja operativa amplia y reserva clara por horario y duración." },
-              { icon: Sparkles, text: "Detalles visuales que comunican categoría, iluminación y servicios." }
+              { icon: Clock3, text: "Horario amplio con reserva clara por fecha, hora y duración." },
+              { icon: Sparkles, text: "Detalles útiles de iluminación, entorno y servicios para elegir mejor." }
             ].map((item) => (
               <div key={item.text} className="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
                 <item.icon className="mt-0.5 h-5 w-5 text-brand" />
@@ -143,7 +149,7 @@ export default function HomePage() {
             ))}
           </div>
           <Link href="/pistas" className={buttonVariants({ variant: "secondary" })}>
-            Ver zona de pistas
+            Ver pistas
           </Link>
         </div>
 
@@ -176,18 +182,21 @@ export default function HomePage() {
         <div className="public-section grid gap-8 lg:grid-cols-[1fr_1fr]">
           <div className="space-y-6">
             <SectionTitle
-              title="Torneos y eventos que merecen escaparate"
-              description="Una web vendible tiene que mostrar cartel, urgencia, categorías, premios y propuesta de valor."
+              title="Torneos y eventos que hacen crecer la comunidad"
+              description="Cuadros bien organizados, experiencias sociales y una agenda viva para que siempre encuentres algo que encaje contigo."
               tone="inverse"
             />
             <p className="max-w-xl text-sm leading-7 text-slate-300">
-              El calendario deportivo del club se convierte en argumento comercial: atrae nuevos jugadores, da visibilidad a patrocinadores y aumenta el valor percibido de la marca.
+              Consulta próximos torneos, eventos destacados y propuestas especiales para competir, conocer gente nueva o disfrutar del club de otra manera.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/torneos" className={buttonVariants({ size: "lg" })}>
                 Ver torneos
               </Link>
-              <Link href="/eventos" className={buttonVariants({ variant: "outline", size: "lg", className: "border-white/15 bg-white/5 text-white hover:bg-white/10" })}>
+              <Link
+                href="/eventos"
+                className={buttonVariants({ variant: "outline", size: "lg", className: "border-white/15 bg-white/5 text-white hover:bg-white/10" })}
+              >
                 Ver eventos
               </Link>
             </div>
@@ -226,9 +235,9 @@ export default function HomePage() {
             Instalaciones y localización
           </div>
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Un club que se puede descubrir online antes de visitarlo</h2>
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Un club pensado para jugar bien y quedarse un rato más</h2>
             <p className="text-sm leading-7 text-slate-600">
-              Presenta amenities, acceso, horarios y experiencia de club para que la decisión de reservar o inscribirse ocurra antes del primer contacto con recepción.
+              Vestuarios completos, terraza, cafetería, tienda técnica y espacios preparados para escuela, torneos y activaciones durante toda la semana.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -245,8 +254,8 @@ export default function HomePage() {
 
         <div className="space-y-6">
           <SectionTitle
-            title="Prueba social y oferta recurrente"
-            description="Una web vendible transmite actividad constante y credibilidad."
+            title="Lo que más valoran nuestros jugadores"
+            description="Una buena experiencia de club se nota en la facilidad para reservar, en el ambiente y en las ganas de volver."
           />
           <div className="grid gap-5">
             {content.testimonials.map((testimonial) => (
@@ -257,7 +266,9 @@ export default function HomePage() {
                   </span>
                   <div>
                     <p className="text-base font-medium text-slate-900">{testimonial.quote}</p>
-                    <p className="mt-3 text-sm text-slate-500">{testimonial.name} · {testimonial.role}</p>
+                    <p className="mt-3 text-sm text-slate-500">
+                      {testimonial.name} · {testimonial.role}
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -270,17 +281,20 @@ export default function HomePage() {
         <Card className="rounded-[2rem] bg-slate-900 p-8 text-white md:p-10">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.25em] text-emerald-200">Siguiente paso</p>
-              <h2 className="text-3xl font-semibold tracking-tight">Convierte la visita en reserva, partido, torneo o clase.</h2>
+              <p className="text-sm uppercase tracking-[0.25em] text-emerald-200">Reserva hoy</p>
+              <h2 className="text-3xl font-semibold tracking-tight">Reserva hoy y descubre por qué cada semana vuelven más jugadores</h2>
               <p className="max-w-2xl text-sm leading-7 text-slate-300">
-                Esta base ya separa contenido comercial y operativa de club. La siguiente evolución natural es conectar la reserva, los eventos y los contenidos a datos reales desde panel interno.
+                Elige pista, apúntate a un torneo, encuentra partido o pide información sobre la escuela. Todo desde una misma experiencia clara y rápida.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link href="/disponibilidad" className={buttonVariants({ size: "lg" })}>
                 Reservar ahora
               </Link>
-              <Link href="/contacto" className={buttonVariants({ variant: "outline", size: "lg", className: "border-white/15 bg-white/5 text-white hover:bg-white/10" })}>
+              <Link
+                href="/contacto"
+                className={buttonVariants({ variant: "outline", size: "lg", className: "border-white/15 bg-white/5 text-white hover:bg-white/10" })}
+              >
                 Contactar
               </Link>
             </div>

@@ -79,10 +79,10 @@ export interface PublicSiteContent {
 
 const publicSiteContent: PublicSiteContent = {
   clubName: "Padel District Club",
-  tagline: "Compite, entrena y reserva en un club diseñado para jugar todo el año.",
+  tagline: "Tu club de pádel en Las Palmas para reservar, entrenar y competir todo el año.",
   city: "Las Palmas de Gran Canaria",
   heroDescription:
-    "Una experiencia de club completa: pistas premium, torneos con cartel propio, eventos sociales, escuela y reserva online clara desde cualquier dispositivo.",
+    "Pistas premium, torneos con identidad propia, escuela para todos los niveles y una agenda viva de eventos para que siempre tengas un plan dentro y fuera de la pista.",
   heroStats: [
     { label: "Pistas disponibles", value: "6" },
     { label: "Eventos al mes", value: "12+" },
@@ -91,21 +91,21 @@ const publicSiteContent: PublicSiteContent = {
   ],
   quickLinks: [
     {
-      eyebrow: "Reserva inmediata",
-      title: "Consulta disponibilidad en tiempo real",
-      description: "Encuentra pista en segundos, revisa el precio final y confirma sin llamadas ni esperas.",
+      eyebrow: "Reserva rápida",
+      title: "Consulta disponibilidad y reserva en segundos",
+      description: "Elige fecha, hora y duración, revisa el precio final y confirma tu pista sin llamadas ni esperas.",
       href: "/disponibilidad"
     },
     {
-      eyebrow: "Calendario deportivo",
-      title: "Torneos con carteles, categorías y premios",
-      description: "Destaca la actividad competitiva del club con fichas preparadas para vender cada evento.",
+      eyebrow: "Torneos del club",
+      title: "Competiciones con categorías, premios e inscripción abierta",
+      description: "Consulta los próximos torneos y asegura tu plaza antes de que se complete el cuadro.",
       href: "/torneos"
     },
     {
-      eyebrow: "Comunidad",
-      title: "Partidos abiertos y eventos especiales",
-      description: "Rellena huecos, capta jugadores nuevos y mantén viva la agenda del club todo el mes.",
+      eyebrow: "Agenda viva",
+      title: "Eventos, americanos y experiencias para cada semana",
+      description: "Encuentra planes sociales, clinics y actividades especiales para seguir conectado al club.",
       href: "/eventos"
     }
   ],
@@ -113,7 +113,7 @@ const publicSiteContent: PublicSiteContent = {
     {
       id: "court-1",
       name: "Pista Central",
-      subtitle: "La pista insignia para torneos, exhibiciones y partidos premium.",
+      subtitle: "Nuestra pista insignia. Ideal para torneos, exhibiciones, partidos importantes y una experiencia de juego premium.",
       type: "Cristal panorámico",
       lighting: "Iluminación LED profesional",
       schedule: "07:00 - 23:00",
@@ -122,7 +122,7 @@ const publicSiteContent: PublicSiteContent = {
     {
       id: "court-2",
       name: "Indoor Pro 2",
-      subtitle: "Condiciones estables para entrenamientos intensivos y clases técnicas.",
+      subtitle: "La opción perfecta para entrenamientos intensivos, clases técnicas y partidos con condiciones de juego estables todo el año.",
       type: "Indoor competición",
       lighting: "LED sin sombras",
       schedule: "07:00 - 23:00",
@@ -131,11 +131,11 @@ const publicSiteContent: PublicSiteContent = {
     {
       id: "court-3",
       name: "Outdoor Sunset",
-      subtitle: "La pista social del club, ideal para americanos y eventos afterwork.",
+      subtitle: "La pista ideal para americanos, partidos afterwork y planes con ambiente relajado y buena energía.",
       type: "Outdoor social",
       lighting: "Luz cálida de tarde y focos nocturnos",
       schedule: "08:00 - 22:30",
-      features: ["Acceso a terraza", "DJ booth para eventos", "Zona chill out"]
+      features: ["Acceso a terraza", "Zona chill out", "Iluminación nocturna"]
     }
   ],
   tournaments: [
@@ -149,7 +149,7 @@ const publicSiteContent: PublicSiteContent = {
       level: "2ª, 3ª y 4ª categoría",
       price: "28 € por jugador",
       prize: "1.200 € en premios y material",
-      description: "El torneo bandera del mes, con cuadro principal, consolación y experiencia de village durante todo el fin de semana."
+      description: "Nuestro gran torneo del mes. Categorías masculina, femenina y mixta, cuadro principal y consolación, premios, patrocinadores y un fin de semana completo de pádel y ambiente de club."
     },
     {
       id: "torneo-empresa",
@@ -161,7 +161,7 @@ const publicSiteContent: PublicSiteContent = {
       level: "Intermedio - avanzado",
       price: "190 € por equipo",
       prize: "Trofeo, networking y welcome pack",
-      description: "Formato orientado a marcas y patrocinadores con visibilidad comercial, hospitality y networking posterior."
+      description: "Un torneo orientado a empresas, networking y patrocinio con formato competitivo y experiencia premium."
     },
     {
       id: "torneo-junior",
@@ -173,7 +173,7 @@ const publicSiteContent: PublicSiteContent = {
       level: "Iniciación y competición",
       price: "18 € por jugador",
       prize: "Medallas, ranking y regalos de academia",
-      description: "Evento de cantera pensado para fidelizar familias, activar escuela y dar continuidad al calendario juvenil."
+      description: "Una cita pensada para cantera, familias y jugadores jóvenes que quieren competir y seguir creciendo."
     }
   ],
   events: [
@@ -185,7 +185,7 @@ const publicSiteContent: PublicSiteContent = {
       type: "Social competition",
       price: "16 €",
       capacity: "24 plazas",
-      description: "Música, ranking exprés, welcome drink y ambiente social para llenar la franja nocturna del viernes."
+      description: "Música, ranking exprés, welcome drink y ambiente perfecto para empezar el fin de semana dentro de la pista."
     },
     {
       id: "evento-clinic",
@@ -195,7 +195,7 @@ const publicSiteContent: PublicSiteContent = {
       type: "Formación técnica",
       price: "22 €",
       capacity: "12 plazas",
-      description: "Sesión enfocada en toma de red, salida de pared y patrones ofensivos con entrenador certificado."
+      description: "Una sesión centrada en mejorar la toma de red, la salida de pared y la construcción del punto con entrenador certificado."
     },
     {
       id: "evento-family",
@@ -203,9 +203,9 @@ const publicSiteContent: PublicSiteContent = {
       date: "Domingo 28 de abril",
       time: "11:00 - 14:00",
       type: "Evento familiar",
-      price: "Gratuito socios / 8 € invitados",
+      price: "Gratis para socios · 8 € invitados",
       capacity: "Aforo abierto",
-      description: "Juegos, retos, mini torneo infantil y activación perfecta para captar nuevas familias al club."
+      description: "Juegos, retos y mini torneo infantil para que las familias conozcan el club y vivan una mañana diferente."
     }
   ],
   academyPlans: [
@@ -226,45 +226,42 @@ const publicSiteContent: PublicSiteContent = {
     {
       id: "academy-kids",
       name: "Escuela Junior",
-      price: "59 €/mes",
+      price: "Desde 39 €/mes",
       audience: "Niños y adolescentes",
-      benefits: ["Itinerario por niveles", "Liga interna", "Eventos con familias"]
+      benefits: ["Grupos por edades", "Entrenadores especializados", "Actividades y torneos internos"]
     }
   ],
   testimonials: [
     {
       name: "Marta R.",
       role: "Socia premium",
-      quote:
-        "La reserva es clara, los eventos se comunican muy bien y el club transmite actividad real todo el tiempo."
+      quote: "Reservar es fácil, las pistas están impecables y siempre hay ambiente."
     },
     {
       name: "Álvaro P.",
       role: "Jugador de liga",
-      quote:
-        "Los partidos abiertos y los torneos están tan bien presentados que siempre sabes qué plan hay cada semana."
+      quote: "Los torneos y los partidos abiertos hacen que siempre tengas plan."
     },
     {
       name: "Claudia S.",
       role: "Madre escuela junior",
-      quote:
-        "La parte de escuela y eventos familiares hace que el club se vea profesional y fácil de recomendar."
+      quote: "La escuela junior está muy bien organizada y transmite mucha confianza."
     }
   ],
   amenities: [
     "Vestuarios completos",
     "Terraza y cafetería",
-    "Parking de clientes",
+    "Parking para clientes",
     "Tienda técnica",
     "Zona recovery",
-    "Wifi y coworking",
+    "Wifi y espacio de trabajo",
     "Sala de vídeo análisis",
-    "Espacio para patrocinadores"
+    "Espacio para patrocinadores y activaciones"
   ],
   address: "Calle León y Castillo 220, Las Palmas de Gran Canaria",
   phone: "+34 600 123 456",
   email: "hola@padeldistrictclub.com",
-  schedule: "Lunes a domingo · 07:00 - 23:00"
+  schedule: "Abierto todos los días · 07:00 a 23:00"
 };
 
 export function getPublicSiteContent(): PublicSiteContent {

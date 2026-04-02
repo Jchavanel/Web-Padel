@@ -14,19 +14,19 @@ export default function CourtsPage() {
       <section className="public-section py-10 md:py-14">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div className="space-y-5">
-            <Badge tone="info">Zona de pistas</Badge>
+            <Badge tone="info">Nuestras pistas</Badge>
             <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-              Una oferta de pistas que vende experiencia, no solo huecos libres.
+              Pistas para competir, entrenar y disfrutar del pádel como toca
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-600">
-              La parte comercial de pistas debe explicar qué hace especial cada espacio: entrenar mejor, competir, jugar social o reservar una pista premium para eventos.
+              Cada espacio del club está pensado para un tipo de experiencia: competición, entrenamiento, juego social o eventos especiales.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/disponibilidad" className={buttonVariants({ size: "lg" })}>
                 Reservar pista
               </Link>
               <Link href="/club" className={buttonVariants({ variant: "outline", size: "lg" })}>
-                Ver instalaciones
+                Ver el club
               </Link>
             </div>
           </div>
@@ -34,10 +34,10 @@ export default function CourtsPage() {
           <Card className="rounded-[2rem] p-8">
             <div className="grid gap-5 sm:grid-cols-2">
               {[
-                { icon: Clock3, title: "Amplio horario", text: "Reserva desde primera hora hasta la noche con franjas claras y reglas visibles." },
-                { icon: Lightbulb, title: "Iluminación premium", text: "Información útil para jugadores que valoran visibilidad y calidad real de juego." },
-                { icon: ShieldCheck, title: "Operativa fiable", text: "Bloqueos, disponibilidad y precios alineados con la parte operativa del sistema." },
-                { icon: MapPinned, title: "Contexto de uso", text: "Muestra si la pista es social, indoor, central o pensada para competición." }
+                { icon: Clock3, title: "Horario amplio", text: "Reserva desde primera hora de la mañana hasta la noche con franjas claras y proceso rápido." },
+                { icon: Lightbulb, title: "Iluminación y condiciones de juego", text: "Información útil sobre luz, superficie, entorno y tipo de pista para que elijas justo lo que necesitas." },
+                { icon: ShieldCheck, title: "Reserva clara y directa", text: "Consulta disponibilidad real, conoce el precio antes de confirmar y reserva en pocos pasos." },
+                { icon: MapPinned, title: "Opciones para cada plan", text: "Competición, escuela, partidos sociales, entrenamientos privados y eventos especiales." }
               ].map((item) => (
                 <div key={item.title} className="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200">
                   <item.icon className="h-5 w-5 text-brand" />
@@ -52,8 +52,8 @@ export default function CourtsPage() {
 
       <section className="public-section space-y-6 py-6">
         <SectionTitle
-          title="Pistas destacadas"
-          description="Cada ficha comunica atributos útiles para el jugador y mejora la conversión desde la parte pública hacia la reserva."
+          title="Elige la pista que mejor encaja con tu partido"
+          description="Cada ficha resume el tipo de experiencia, el entorno de juego y los detalles que más valoran nuestros jugadores."
         />
         <div className="grid gap-6 lg:grid-cols-3">
           {content.featuredCourts.map((court, index) => (
@@ -89,15 +89,15 @@ export default function CourtsPage() {
       <section className="public-section grid gap-6 py-10 lg:grid-cols-[1fr_1fr]">
         <Card className="rounded-[2rem] p-8">
           <SectionTitle
-            title="Cómo debe funcionar la reserva"
-            description="El flujo comercial lleva al usuario hasta la operativa sin fricción."
+            title="Reserva online en menos de un minuto"
+            description="Consulta fecha, hora y duración, compara pistas y confirma tu reserva con total claridad antes de pagar."
           />
           <div className="mt-6 grid gap-4">
             {[
-              "El usuario entra desde la ficha de pista o desde el CTA principal de la home.",
+              "Elige la pista que prefieres desde esta misma página o desde el botón principal de la home.",
               "Consulta disponibilidad real por fecha, hora y duración.",
-              "Ve el precio final antes de confirmar, sin sorpresa en el checkout.",
-              "La misma base permite destacar partidos abiertos en franjas con baja ocupación."
+              "Revisa el precio final antes de confirmar, sin sorpresas en el último paso.",
+              "Encuentra una experiencia distinta para cada tipo de partido: entrenamiento, social o competición."
             ].map((item, index) => (
               <div key={item} className="flex gap-4 rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200">
                 <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand/10 text-sm font-semibold text-brand">
@@ -111,16 +111,16 @@ export default function CourtsPage() {
 
         <Card className="rounded-[2rem] border-white/10 bg-slate-950 p-8 text-white">
           <SectionTitle
-            title="Siguiente evolución técnica"
-            description="Cuando conectes este bloque con datos reales, cada pista podrá mostrar ocupación, highlights y disponibilidad dinámica."
+            title="Reserva una pista que se adapte a tu plan"
+            description="Desde una tarde de entrenamiento hasta un partido especial con amigos o una pista preparada para competición."
             tone="inverse"
           />
           <div className="mt-6 space-y-4 text-sm leading-7 text-slate-300">
-            <p>Esto permite convertir la página de pistas en un catálogo vivo del club, no en una página estática sin valor comercial.</p>
-            <p>También prepara el terreno para vender torneos, clases y activaciones usando la misma capa pública.</p>
+            <p>La pista adecuada cambia la experiencia del partido. Por eso te mostramos detalles útiles antes de reservar.</p>
+            <p>Si tienes dudas sobre horarios, disponibilidad o quieres organizar una actividad especial, te ayudamos desde contacto.</p>
           </div>
           <Link href="/contacto" className={buttonVariants({ variant: "outline", className: "mt-6 border-white/15 bg-white/5 text-white hover:bg-white/10" })}>
-            Solicitar demo o visita
+            Contactar con el club
           </Link>
         </Card>
       </section>

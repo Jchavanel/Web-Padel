@@ -47,15 +47,15 @@ export function SiteFooter() {
           <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Horarios y servicios</h3>
           <div className="mt-4 space-y-3 text-sm text-slate-600">
             <p>{content.schedule}</p>
-            <p>Atención a torneos, escuela y eventos especiales durante toda la semana.</p>
-            <p>Soporte para reservas, recepción y organización deportiva desde la misma plataforma.</p>
+            <p>Escuela, torneos, eventos especiales y reservas asistidas durante toda la semana.</p>
+            <p>Atención para jugadores, familias, grupos y empresas que quieran vivir el club de otra manera.</p>
           </div>
         </div>
       </div>
 
       <div className="border-t border-slate-200">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-5 text-xs text-slate-500">
-          <p>© 2026 {content.clubName}. Web comercial y operativa para clubes de pádel.</p>
+          <p>© 2026 {content.clubName}. Todos los derechos reservados.</p>
           <div className="flex items-center gap-4">
             <span>Privacidad</span>
             <span>Términos</span>

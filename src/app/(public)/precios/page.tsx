@@ -19,7 +19,7 @@ export default async function PricesPage() {
               Precios claros para convertir mejor y reducir fricción en recepción.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-600">
-              La parte pública debe comunicar tarifas entendibles; la lógica real sigue viviendo en reglas configurables detrás del sistema.
+              Consulta tarifas claras por franja, tipo de usuario y servicios adicionales para saber cuánto pagarás antes de reservar.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/disponibilidad" className={buttonVariants({ size: "lg" })}>
@@ -48,8 +48,8 @@ export default async function PricesPage() {
 
       <section className="public-section space-y-6 py-6">
         <SectionTitle
-          title="Tabla pública de tarifas"
-          description="Visible, legible y preparada para evolucionar a una gestión real de reglas sin tocar la presentación."
+          title="Tarifas del club"
+          description="Consulta precios por franja, duración y tipo de usuario de forma rápida y sin letra pequeña."
         />
 
         <Card className="grid gap-4 rounded-[2rem] p-5 md:grid-cols-3">

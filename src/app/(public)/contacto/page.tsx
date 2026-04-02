@@ -13,10 +13,10 @@ export default function ContactPage() {
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-5">
           <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-            Contacto, visitas, reservas de grupo y torneos.
+            Contacto, reservas de grupo, torneos y escuela
           </h1>
           <p className="max-w-xl text-base leading-7 text-slate-600">
-            Esta página debe cerrar la parte comercial: resolver dudas, captar leads y facilitar inscripción o reserva asistida cuando haga falta.
+            Estamos aquí para ayudarte a reservar, apuntarte a un torneo, conocer la escuela o organizar una actividad especial en el club.
           </p>
           <div className="grid gap-4">
             <Card className="flex items-start gap-4 rounded-[1.75rem] p-5">
@@ -45,8 +45,8 @@ export default function ContactPage() {
 
         <Card className="rounded-[2rem] p-8">
           <SectionTitle
-            title="Formulario de contacto"
-            description="Stub comercial preparado para evolucionar a lead capture real o integración con CRM."
+            title="Cuéntanos qué necesitas"
+            description="Rellena el formulario y te responderemos lo antes posible. También puedes escribirnos si quieres organizar un evento, pedir información sobre la escuela o reservar para un grupo."
           />
           <form className="mt-6 grid gap-4">
             <input className="rounded-xl border border-slate-200 px-4 py-3 text-sm" placeholder="Nombre y apellidos" />
@@ -57,7 +57,7 @@ export default function ContactPage() {
               <option value="torneo">Torneos</option>
               <option value="evento">Eventos</option>
               <option value="escuela">Escuela</option>
-              <option value="empresa">Eventos empresa</option>
+              <option value="empresa">Empresas y grupos</option>
             </select>
             <textarea className="min-h-36 rounded-xl border border-slate-200 px-4 py-3 text-sm" placeholder="Cuéntanos qué necesitas" />
             <button type="button" className={buttonVariants({ className: "w-full" })}>
@@ -68,13 +68,13 @@ export default function ContactPage() {
 
           <div className="mt-6 rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-200">
             <p className="text-sm leading-6 text-slate-600">
-              [Inference] En una versión de producción, este formulario debería conectarse a Supabase, email transactional o CRM, con validación y seguimiento de leads.
+              Al enviar este formulario aceptas que usemos tus datos para responder a tu consulta.
             </p>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/disponibilidad" className={buttonVariants({ variant: "outline" })}>
-              Ir a reservas
+              Reservar pista
             </Link>
             <Link href="/torneos" className={buttonVariants({ variant: "ghost" })}>
               Ver torneos

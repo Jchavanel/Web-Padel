@@ -10,8 +10,10 @@ export function SiteHeader() {
     <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950 text-white shadow-[0_1px_0_rgba(255,255,255,0.05)] backdrop-blur">
       <div className="border-b border-white/10 bg-emerald-400/10">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-6 py-2 text-xs text-slate-200">
-          <p>{content.city} · {content.schedule}</p>
-          <p className="text-emerald-200">Eventos, reservas y escuela en una sola experiencia</p>
+          <p>
+            {content.city} · {content.schedule}
+          </p>
+          <p className="text-emerald-200">Torneos, escuela y reservas todo el año</p>
         </div>
       </div>
 

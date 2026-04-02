@@ -14,19 +14,19 @@ export default function AcademyPage() {
       <section className="public-section py-10 md:py-14">
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div className="space-y-5">
-            <Badge tone="info">Escuela y programas</Badge>
+            <Badge tone="info">Escuela de pádel</Badge>
             <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-              La escuela no debe quedar escondida: es una línea real de ingresos y fidelización.
+              Aprende, mejora y compite con una escuela pensada para cada etapa
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-600">
-              Organiza la oferta por perfiles, comunica beneficios y convierte la parte formativa en una sección comercial sólida dentro del club.
+              Programas para iniciación, tecnificación, escuela junior y jugadores que quieren dar un paso más con una metodología clara y seguimiento real.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/contacto" className={buttonVariants({ size: "lg" })}>
                 Solicitar información
               </Link>
               <Link href="/partidos" className={buttonVariants({ variant: "outline", size: "lg" })}>
-                Ver comunidad de juego
+                Ver partidos y comunidad
               </Link>
             </div>
           </div>
@@ -35,8 +35,8 @@ export default function AcademyPage() {
               {[
                 { icon: GraduationCap, title: "Entrenamiento progresivo" },
                 { icon: Users2, title: "Grupos por nivel" },
-                { icon: Shield, title: "Fidelización familiar" },
-                { icon: TimerReset, title: "Recurrencia mensual" }
+                { icon: Shield, title: "Escuela junior" },
+                { icon: TimerReset, title: "Planes mensuales" }
               ].map((item) => (
                 <div key={item.title} className="rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-200">
                   <item.icon className="h-5 w-5 text-brand" />
@@ -50,8 +50,8 @@ export default function AcademyPage() {
 
       <section className="public-section space-y-6 py-6">
         <SectionTitle
-          title="Programas de academia"
-          description="La estructura debe ayudar a que cada usuario encuentre rápidamente el plan que encaja con su perfil."
+          title="Nuestros programas"
+          description="Cada plan está pensado para un perfil concreto, con objetivos claros y un entorno adecuado para progresar."
         />
         <div className="grid gap-6 xl:grid-cols-3">
           {content.academyPlans.map((plan, index) => (
@@ -75,13 +75,16 @@ export default function AcademyPage() {
       <section className="public-section py-10">
         <Card className="rounded-[2rem] border-white/10 bg-slate-950 p-8 text-white md:p-10">
           <SectionTitle
-            title="La escuela conecta con el resto del ecosistema"
-            description="Buena academia, buena web y buena operativa terminan alimentando reservas, eventos, ligas y vida de club."
+            title="Empieza en el nivel adecuado y evoluciona con nosotros"
+            description="Cuéntanos tu experiencia, tu edad o tus objetivos y te orientamos hacia el grupo que mejor encaja contigo."
             tone="inverse"
           />
           <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-300">
-            Aquí puedes enlazar más adelante con evaluaciones de nivel, agendas de clase, pagos recurrentes y promociones internas sin rehacer la arquitectura pública.
+            La escuela está preparada para acompañar a jugadores que empiezan, perfiles que quieren mejorar su rendimiento y familias que buscan una actividad estable durante todo el año.
           </p>
+          <Link href="/contacto" className={buttonVariants({ variant: "outline", className: "mt-6 border-white/15 bg-white/5 text-white hover:bg-white/10" })}>
+            Quiero información
+          </Link>
         </Card>
       </section>
     </div>

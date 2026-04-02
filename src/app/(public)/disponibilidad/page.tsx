@@ -35,16 +35,16 @@ export default async function AvailabilityPage() {
           <div className="space-y-5">
             <Badge tone="success">Reserva online</Badge>
             <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-              Consulta disponibilidad real y confirma en una sola pantalla.
+              Consulta disponibilidad real y confirma tu reserva en una sola pantalla.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-600">
-              Esta vista ya no es un simple stub técnico. Es la puerta de entrada operativa del club y debe convivir con la capa comercial sin romper experiencia ni marca.
+              Elige fecha, hora y duración, compara pistas disponibles y confirma con una experiencia clara, rápida y pensada para el jugador.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               {[
                 { icon: CalendarDays, text: "Filtra por fecha, duración y tipo de pista." },
                 { icon: Clock3, text: "Ve estados claros y CTA directos desde la rejilla." },
-                { icon: ShieldCheck, text: "Precios, bloqueos y reglas alineadas con operación real." }
+                { icon: ShieldCheck, text: "Precio visible antes de confirmar y estados claros en cada pista." }
               ].map((item) => (
                 <div key={item.text} className="rounded-2xl bg-white p-4 text-sm text-slate-700 shadow-sm ring-1 ring-slate-200">
                   <item.icon className="mb-3 h-5 w-5 text-brand" />
@@ -75,7 +75,7 @@ export default async function AvailabilityPage() {
       <section className="public-section space-y-6 py-6">
         <SectionTitle
           title="Buscar disponibilidad"
-          description="El objetivo es reducir fricción: pocos filtros, estados comprensibles y precio visible antes de reservar."
+          description="Encuentra tu pista en pocos pasos con filtros claros, estados comprensibles y precio visible antes de reservar."
         />
 
         <Card className="grid gap-4 rounded-[2rem] p-5 md:grid-cols-5">
@@ -137,7 +137,7 @@ export default async function AvailabilityPage() {
           <Card className="space-y-5 rounded-[2rem] p-6">
             <SectionTitle
               title="Preview de reserva"
-              description="Este panel anticipa lo que después será el drawer o checkout del flujo final."
+              description="Aquí ves el resumen de tu reserva antes de confirmar: pista, horario, tarifa aplicada y precio final."
             />
 
             <dl className="space-y-3 text-sm">

@@ -17,10 +17,10 @@ export default async function OpenMatchesPage() {
           <div className="space-y-5">
             <Badge tone="info">Partidos abiertos</Badge>
             <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-              Completa plazas, reduce fricción y activa comunidad de juego sin depender de recepción.
+              Encuentra partido, completa plazas y juega con gente de tu nivel.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-600">
-              Esta capa pública debe ayudar a llenar huecos, captar jugadores y mejorar ocupación, no limitarse a una tabla funcional sin contexto.
+              Consulta partidos abiertos, revisa nivel, horario y plazas disponibles y únete en pocos pasos.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/disponibilidad" className={buttonVariants({ size: "lg" })}>
@@ -32,11 +32,11 @@ export default async function OpenMatchesPage() {
             </div>
           </div>
           <Card className="rounded-[2rem] border-white/10 bg-slate-950 p-8 text-white">
-            <p className="text-sm text-slate-300">Funcionamiento recomendado</p>
+            <p className="text-sm text-slate-300">Qué encontrarás aquí</p>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
               <li>• Filtrado por día, hora, nivel y plazas libres.</li>
-              <li>• CTA “Unirme” visible sin entrar al detalle.</li>
-              <li>• Diferenciación clara entre partido social, competitivo o mixto.</li>
+              <li>• Acceso rápido a partidos con plazas disponibles.</li>
+              <li>• Información clara sobre formato, nivel y precio por jugador.</li>
             </ul>
           </Card>
         </div>
@@ -44,8 +44,8 @@ export default async function OpenMatchesPage() {
 
       <section className="public-section space-y-6 py-6">
         <SectionTitle
-          title="Encuentra partido rápidamente"
-          description="El usuario debe entender en segundos si el partido encaja con nivel, hora y plazas disponibles."
+          title="Partidos abiertos disponibles"
+          description="Filtra por día, hora y nivel para encontrar el partido que mejor encaja contigo."
         />
 
         <Card className="grid gap-4 rounded-[2rem] p-5 md:grid-cols-5">

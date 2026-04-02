@@ -14,12 +14,12 @@ export default function ClubPage() {
       <section className="public-section py-10 md:py-14">
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div className="space-y-5">
-            <Badge tone="neutral">Instalaciones y experiencia</Badge>
+            <Badge tone="neutral">El club</Badge>
             <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-              El club debe sentirse tangible desde la web: ubicación, ambiente, servicios y propuesta de valor.
+              Un club pensado para jugar bien y quedarse un rato más
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-600">
-              Esta sección convierte la visita digital en confianza. Ayuda a justificar precios, membresías y desplazamiento hasta el club.
+              Instalaciones cuidadas, servicios útiles y un ambiente que combina deporte, comunidad y comodidad durante toda la semana.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/contacto" className={buttonVariants({ size: "lg" })}>
@@ -33,10 +33,10 @@ export default function ClubPage() {
           <Card className="rounded-[2rem] p-8">
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                { icon: Coffee, title: "Cafetería y terraza" },
+                { icon: Coffee, title: "Terraza y cafetería" },
                 { icon: Store, title: "Tienda técnica" },
                 { icon: Dumbbell, title: "Zona recovery" },
-                { icon: Waves, title: "Vestuario premium" }
+                { icon: Waves, title: "Vestuarios completos" }
               ].map((item) => (
                 <div key={item.title} className="rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-200">
                   <item.icon className="h-5 w-5 text-brand" />
@@ -51,8 +51,8 @@ export default function ClubPage() {
       <section className="public-section grid gap-6 py-6 lg:grid-cols-[1.15fr_0.85fr]">
         <Card className="rounded-[2rem] p-8">
           <SectionTitle
-            title="Servicios e instalaciones"
-            description="Todo lo que refuerza la percepción de calidad debe estar ordenado y visible."
+            title="Lo que encontrarás en tu visita"
+            description="Todo lo que necesitas para venir a jugar, entrenar, competir o pasar tiempo en el club con comodidad."
           />
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {content.amenities.map((amenity) => (
@@ -68,7 +68,7 @@ export default function ClubPage() {
             <MapPin className="h-4 w-4" />
             Localización
           </div>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight">Acceso sencillo y atención durante toda la semana</h2>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight">Fácil de encontrar, cómodo para volver</h2>
           <div className="mt-6 space-y-4 text-sm leading-7 text-slate-300">
             <p>{content.address}</p>
             <p>{content.schedule}</p>
@@ -81,14 +81,14 @@ export default function ClubPage() {
       <section className="public-section py-10">
         <Card className="rounded-[2rem] p-8">
           <SectionTitle
-            title="Qué transmite esta sección cuando está bien resuelta"
-            description="Menos objeciones, más confianza y una marca de club más convincente."
+            title="Ven a conocer el club"
+            description="Reserva una pista, visita nuestras instalaciones o escríbenos si quieres información sobre escuela, torneos o eventos."
           />
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {[
-              "Justifica membresías y precios medios más altos.",
-              "Da contexto a torneos, eventos y escuela.",
-              "Reduce la dependencia de redes sociales para explicar el club."
+              "Instalaciones cuidadas y preparadas para juego, formación y competición.",
+              "Atención todos los días con horario amplio para reservas y actividades.",
+              "Un entorno cómodo para venir a jugar y quedarse un rato más en el club."
             ].map((item) => (
               <div key={item} className="rounded-2xl bg-slate-50 p-5 text-sm leading-6 text-slate-700 ring-1 ring-slate-200">
                 {item}
