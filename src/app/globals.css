@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+a {
+  @apply text-inherit no-underline;
+}
+
+::selection {
+  @apply bg-brand/20 text-slate-950;
+}
+
+.public-section {
+  @apply mx-auto max-w-7xl px-6;
+}
+
+.public-grid {
+  @apply grid gap-6;
+}
+
+.poster-glow {
+  background:
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.25), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
+}
+
+.hero-panel {
+  background:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.22), transparent 35%),
+    linear-gradient(135deg, rgba(2, 6, 23, 1), rgba(15, 23, 42, 0.92));
+}
