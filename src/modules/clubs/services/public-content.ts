@@ -1,3 +1,8 @@
+import "server-only";
+
+import { cache } from "react";
+import { createClient } from "@/lib/supabase/server";
+
 export interface HeroStat {
   label: string;
   value: string;
@@ -8,6 +13,8 @@ export interface PromoCard {
   description: string;
   href: string;
   eyebrow: string;
+  ctaLabel?: string;
+  metric?: string;
 }
 
 export interface CourtShowcase {
@@ -31,6 +38,10 @@ export interface TournamentShowcase {
   price: string;
   prize: string;
   description: string;
+  href?: string;
+  ctaLabel?: string;
+  venue?: string;
+  accent?: "emerald" | "indigo" | "amber" | "rose";
 }
 
 export interface EventShowcase {
@@ -42,6 +53,9 @@ export interface EventShowcase {
   price: string;
   capacity: string;
   description: string;
+  href?: string;
+  ctaLabel?: string;
+  accent?: "emerald" | "indigo" | "amber" | "rose";
 }
 
 export interface PlanShowcase {
@@ -77,7 +91,52 @@ export interface PublicSiteContent {
   schedule: string;
 }
 
-const publicSiteContent: PublicSiteContent = {
+type MarketingHighlightRow = {
+  slug: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  href: string;
+  cta_label: string | null;
+  metric: string | null;
+  display_order: number;
+};
+
+type MarketingTournamentRow = {
+  slug: string;
+  title: string;
+  start_date: string;
+  status: string;
+  category: string;
+  level: string;
+  price_label: string;
+  prize_label: string;
+  description: string;
+  href: string | null;
+  cta_label: string | null;
+  venue: string | null;
+  accent: TournamentShowcase["accent"] | null;
+  is_featured: boolean;
+  display_order: number;
+};
+
+type MarketingEventRow = {
+  slug: string;
+  title: string;
+  event_date: string;
+  time_label: string;
+  event_type: string;
+  price_label: string;
+  capacity_label: string;
+  description: string;
+  href: string | null;
+  cta_label: string | null;
+  accent: EventShowcase["accent"] | null;
+  is_featured: boolean;
+  display_order: number;
+};
+
+const basePublicSiteContent: PublicSiteContent = {
   clubName: "Padel District Club",
   tagline: "Tu club de pádel en Las Palmas para reservar, entrenar y competir todo el año.",
   city: "Las Palmas de Gran Canaria",
@@ -94,19 +153,25 @@ const publicSiteContent: PublicSiteContent = {
       eyebrow: "Reserva rápida",
       title: "Consulta disponibilidad y reserva en segundos",
       description: "Elige fecha, hora y duración, revisa el precio final y confirma tu pista sin llamadas ni esperas.",
-      href: "/disponibilidad"
+      href: "/disponibilidad",
+      ctaLabel: "Reservar pista",
+      metric: "Disponibilidad en tiempo real"
     },
     {
       eyebrow: "Torneos del club",
       title: "Competiciones con categorías, premios e inscripción abierta",
       description: "Consulta los próximos torneos y asegura tu plaza antes de que se complete el cuadro.",
-      href: "/torneos"
+      href: "/torneos",
+      ctaLabel: "Ver torneos",
+      metric: "Inscripciones abiertas"
     },
     {
       eyebrow: "Agenda viva",
       title: "Eventos, americanos y experiencias para cada semana",
       description: "Encuentra planes sociales, clinics y actividades especiales para seguir conectado al club.",
-      href: "/eventos"
+      href: "/eventos",
+      ctaLabel: "Ver agenda",
+      metric: "Nuevos planes cada semana"
     }
   ],
   featuredCourts: [
@@ -149,7 +214,12 @@ const publicSiteContent: PublicSiteContent = {
       level: "2ª, 3ª y 4ª categoría",
       price: "28 € por jugador",
       prize: "1.200 € en premios y material",
-      description: "Nuestro gran torneo del mes. Categorías masculina, femenina y mixta, cuadro principal y consolación, premios, patrocinadores y un fin de semana completo de pádel y ambiente de club."
+      description:
+        "Nuestro gran torneo del mes. Categorías masculina, femenina y mixta, cuadro principal y consolación, premios, patrocinadores y un fin de semana completo de pádel y ambiente de club.",
+      href: "/contacto?motivo=torneos",
+      ctaLabel: "Inscribirme",
+      venue: "Pista central y pistas indoor",
+      accent: "emerald"
     },
     {
       id: "torneo-empresa",
@@ -161,7 +231,11 @@ const publicSiteContent: PublicSiteContent = {
       level: "Intermedio - avanzado",
       price: "190 € por equipo",
       prize: "Trofeo, networking y welcome pack",
-      description: "Un torneo orientado a empresas, networking y patrocinio con formato competitivo y experiencia premium."
+      description: "Un torneo orientado a empresas, networking y patrocinio con formato competitivo y experiencia premium.",
+      href: "/contacto?motivo=eventos",
+      ctaLabel: "Solicitar información",
+      venue: "Zona hospitality y terrace club",
+      accent: "indigo"
     },
     {
       id: "torneo-junior",
@@ -173,7 +247,11 @@ const publicSiteContent: PublicSiteContent = {
       level: "Iniciación y competición",
       price: "18 € por jugador",
       prize: "Medallas, ranking y regalos de academia",
-      description: "Una cita pensada para cantera, familias y jugadores jóvenes que quieren competir y seguir creciendo."
+      description: "Una cita pensada para cantera, familias y jugadores jóvenes que quieren competir y seguir creciendo.",
+      href: "/contacto?motivo=escuela",
+      ctaLabel: "Avisarme",
+      venue: "Academia y zona junior",
+      accent: "amber"
     }
   ],
   events: [
@@ -185,7 +263,10 @@ const publicSiteContent: PublicSiteContent = {
       type: "Social competition",
       price: "16 €",
       capacity: "24 plazas",
-      description: "Música, ranking exprés, welcome drink y ambiente perfecto para empezar el fin de semana dentro de la pista."
+      description: "Música, ranking exprés, welcome drink y ambiente perfecto para empezar el fin de semana dentro de la pista.",
+      href: "/contacto?motivo=eventos",
+      ctaLabel: "Reservar plaza",
+      accent: "emerald"
     },
     {
       id: "evento-clinic",
@@ -195,7 +276,10 @@ const publicSiteContent: PublicSiteContent = {
       type: "Formación técnica",
       price: "22 €",
       capacity: "12 plazas",
-      description: "Una sesión centrada en mejorar la toma de red, la salida de pared y la construcción del punto con entrenador certificado."
+      description: "Una sesión centrada en mejorar la toma de red, la salida de pared y la construcción del punto con entrenador certificado.",
+      href: "/contacto?motivo=escuela",
+      ctaLabel: "Reservar plaza",
+      accent: "indigo"
     },
     {
       id: "evento-family",
@@ -205,7 +289,10 @@ const publicSiteContent: PublicSiteContent = {
       type: "Evento familiar",
       price: "Gratis para socios · 8 € invitados",
       capacity: "Aforo abierto",
-      description: "Juegos, retos y mini torneo infantil para que las familias conozcan el club y vivan una mañana diferente."
+      description: "Juegos, retos y mini torneo infantil para que las familias conozcan el club y vivan una mañana diferente.",
+      href: "/contacto?motivo=eventos",
+      ctaLabel: "Reservar plaza",
+      accent: "amber"
     }
   ],
   academyPlans: [
@@ -264,6 +351,147 @@ const publicSiteContent: PublicSiteContent = {
   schedule: "Abierto todos los días · 07:00 a 23:00"
 };
 
-export function getPublicSiteContent(): PublicSiteContent {
-  return publicSiteContent;
+function formatShortMonth(dateValue: string) {
+  return new Intl.DateTimeFormat("es-ES", { month: "short" })
+    .format(new Date(dateValue))
+    .replace(".", "")
+    .slice(0, 3)
+    .toUpperCase();
 }
+
+function formatDay(dateValue: string) {
+  return new Intl.DateTimeFormat("es-ES", { day: "2-digit" }).format(new Date(dateValue));
+}
+
+function formatLongDate(dateValue: string) {
+  const formatted = new Intl.DateTimeFormat("es-ES", {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  }).format(new Date(dateValue));
+
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+}
+
+async function getDynamicHighlights() {
+  const supabase = createClient();
+
+  if (!supabase) {
+    return null;
+  }
+
+  const result = await supabase
+    .from("marketing_highlights")
+    .select("slug, eyebrow, title, description, href, cta_label, metric, display_order")
+    .eq("is_active", true)
+    .order("display_order", { ascending: true });
+
+  if (result.error) {
+    return null;
+  }
+
+  const rows = (result.data ?? []) as MarketingHighlightRow[];
+
+  return rows.map((row) => ({
+    eyebrow: row.eyebrow,
+    title: row.title,
+    description: row.description,
+    href: row.href,
+    ctaLabel: row.cta_label ?? "Abrir sección",
+    metric: row.metric ?? undefined
+  })) satisfies PromoCard[];
+}
+
+async function getDynamicTournaments() {
+  const supabase = createClient();
+
+  if (!supabase) {
+    return null;
+  }
+
+  const result = await supabase
+    .from("marketing_tournaments")
+    .select(
+      "slug, title, start_date, status, category, level, price_label, prize_label, description, href, cta_label, venue, accent, is_featured, display_order"
+    )
+    .eq("is_active", true)
+    .order("is_featured", { ascending: false })
+    .order("display_order", { ascending: true })
+    .order("start_date", { ascending: true });
+
+  if (result.error) {
+    return null;
+  }
+
+  const rows = (result.data ?? []) as MarketingTournamentRow[];
+
+  return rows.map((row) => ({
+    id: row.slug,
+    title: row.title,
+    month: formatShortMonth(row.start_date),
+    day: formatDay(row.start_date),
+    status: row.status,
+    category: row.category,
+    level: row.level,
+    price: row.price_label,
+    prize: row.prize_label,
+    description: row.description,
+    href: row.href ?? "/contacto?motivo=torneos",
+    ctaLabel: row.cta_label ?? "Inscribirme",
+    venue: row.venue ?? "Club principal",
+    accent: row.accent ?? "emerald"
+  })) satisfies TournamentShowcase[];
+}
+
+async function getDynamicEvents() {
+  const supabase = createClient();
+
+  if (!supabase) {
+    return null;
+  }
+
+  const result = await supabase
+    .from("marketing_events")
+    .select(
+      "slug, title, event_date, time_label, event_type, price_label, capacity_label, description, href, cta_label, accent, is_featured, display_order"
+    )
+    .eq("is_active", true)
+    .order("is_featured", { ascending: false })
+    .order("display_order", { ascending: true })
+    .order("event_date", { ascending: true });
+
+  if (result.error) {
+    return null;
+  }
+
+  const rows = (result.data ?? []) as MarketingEventRow[];
+
+  return rows.map((row) => ({
+    id: row.slug,
+    title: row.title,
+    date: formatLongDate(row.event_date),
+    time: row.time_label,
+    type: row.event_type,
+    price: row.price_label,
+    capacity: row.capacity_label,
+    description: row.description,
+    href: row.href ?? "/contacto?motivo=eventos",
+    ctaLabel: row.cta_label ?? "Reservar plaza",
+    accent: row.accent ?? "emerald"
+  })) satisfies EventShowcase[];
+}
+
+export const getPublicSiteContent = cache(async (): Promise<PublicSiteContent> => {
+  const [highlights, tournaments, events] = await Promise.all([
+    getDynamicHighlights().catch(() => null),
+    getDynamicTournaments().catch(() => null),
+    getDynamicEvents().catch(() => null)
+  ]);
+
+  return {
+    ...basePublicSiteContent,
+    quickLinks: highlights && highlights.length > 0 ? highlights : basePublicSiteContent.quickLinks,
+    tournaments: tournaments && tournaments.length > 0 ? tournaments : basePublicSiteContent.tournaments,
+    events: events && events.length > 0 ? events : basePublicSiteContent.events
+  };
+});

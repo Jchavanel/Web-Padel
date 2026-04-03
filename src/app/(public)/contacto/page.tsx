@@ -6,8 +6,8 @@ import { SectionTitle } from "@/components/shared/section-title";
 import { getPublicSiteContent } from "@/modules/clubs/services/public-content";
 import { ContactForm } from "@/modules/contact/components/contact-form";
 
-export default function ContactPage() {
-  const content = getPublicSiteContent();
+export default async function ContactPage() {
+  const content = await getPublicSiteContent();
 
   return (
     <div className="public-section py-10 md:py-14">

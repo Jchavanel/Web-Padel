@@ -6,8 +6,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { SectionTitle } from "@/components/shared/section-title";
 import { getPublicSiteContent } from "@/modules/clubs/services/public-content";
 
-export default function CourtsPage() {
-  const content = getPublicSiteContent();
+export default async function CourtsPage() {
+  const content = await getPublicSiteContent();
 
   return (
     <div className="pb-16">

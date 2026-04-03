@@ -1,20 +1,22 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, MapPin, Trophy, Users, Sparkles, Clock3, Star } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { ArrowRight, CalendarDays, Clock3, MapPin, Sparkles, Star, Trophy, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { SectionTitle } from "@/components/shared/section-title";
 import { getPublicSiteContent } from "@/modules/clubs/services/public-content";
 
-export default function HomePage() {
-  const content = getPublicSiteContent();
+export default async function HomePage() {
+  const content = await getPublicSiteContent();
+  const featuredTournament = content.tournaments[0];
+  const featuredEvent = content.events[0];
 
   return (
     <div className="pb-16">
       <section className="public-section py-10 md:py-14">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="hero-panel overflow-hidden rounded-[2rem] p-8 text-white shadow-2xl shadow-slate-950/20 md:p-10">
-            <div className="max-w-2xl space-y-6">
+          <div className="hero-panel rounded-[2rem] p-8 text-white shadow-2xl shadow-slate-950/20 md:p-10">
+            <div className="relative z-10 max-w-2xl space-y-6">
               <Badge className="bg-emerald-400/15 text-emerald-100">Pádel, escuela y eventos en un mismo club</Badge>
               <div className="space-y-4">
                 <p className="text-sm uppercase tracking-[0.25em] text-emerald-200">{content.city}</p>
@@ -38,7 +40,7 @@ export default function HomePage() {
               </div>
               <div className="grid gap-4 pt-4 sm:grid-cols-2 xl:grid-cols-4">
                 {content.heroStats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div key={stat.label} className="lux-pill rounded-2xl p-4 backdrop-blur">
                     <p className="text-2xl font-semibold text-white">{stat.value}</p>
                     <p className="mt-1 text-sm text-slate-300">{stat.label}</p>
                   </div>
@@ -48,48 +50,57 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-5">
-            <Card className="poster-glow overflow-hidden border-0 p-0 text-white">
-              <div className="space-y-4 p-6 md:p-7">
-                <Badge className="bg-white/10 text-white">Torneo destacado</Badge>
+            <Card className="poster-glow overflow-hidden border-0 p-0 text-white shadow-2xl shadow-slate-950/20">
+              <div className="soft-grid space-y-4 p-6 md:p-7">
+                <div className="flex items-center justify-between gap-4">
+                  <Badge className="bg-white/10 text-white">Torneo destacado</Badge>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+                    {featuredTournament?.status}
+                  </span>
+                </div>
                 <div className="space-y-2">
                   <p className="text-xs uppercase tracking-[0.35em] text-emerald-200">Open del mes</p>
-                  <h2 className="text-3xl font-semibold">{content.tournaments[0]?.title}</h2>
+                  <h2 className="text-3xl font-semibold">{featuredTournament?.title}</h2>
                 </div>
-                <p className="max-w-md text-sm leading-6 text-slate-200">{content.tournaments[0]?.description}</p>
+                <p className="max-w-md text-sm leading-6 text-slate-200">{featuredTournament?.description}</p>
                 <div className="grid gap-3 text-sm text-slate-200 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="lux-pill rounded-2xl p-4">
                     <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Categorías</p>
-                    <p className="mt-2 font-medium">{content.tournaments[0]?.category}</p>
+                    <p className="mt-2 font-medium">{featuredTournament?.category}</p>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="lux-pill rounded-2xl p-4">
                     <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Premios</p>
-                    <p className="mt-2 font-medium">{content.tournaments[0]?.prize}</p>
+                    <p className="mt-2 font-medium">{featuredTournament?.prize}</p>
                   </div>
                 </div>
                 <Link
-                  href="/torneos"
+                  href={featuredTournament?.href ?? "/torneos"}
                   className={buttonVariants({ variant: "outline", className: "border-white/15 bg-white/5 text-white hover:bg-white/10" })}
                 >
-                  Ver torneo
+                  {featuredTournament?.ctaLabel ?? "Ver torneo"}
                 </Link>
               </div>
             </Card>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <Card className="space-y-3">
+              <Card className="premium-card space-y-3 rounded-[1.75rem] p-6">
                 <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                   <CalendarDays className="h-4 w-4 text-brand" />
                   Eventos del club
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900">Un club activo toda la semana</h3>
+                <h3 className="text-xl font-semibold text-slate-900">{featuredEvent?.title ?? "Agenda del club"}</h3>
                 <p className="text-sm leading-6 text-slate-600">
-                  Americanos, clinics, propuestas familiares y eventos especiales para que siempre tengas un motivo para volver.
+                  {featuredEvent?.description ?? "Planes sociales, clinics y experiencias para que cada semana tenga una propuesta nueva."}
                 </p>
-                <Link href="/eventos" className="inline-flex items-center gap-2 text-sm font-medium text-brand">
-                  Ver agenda <ArrowRight className="h-4 w-4" />
+                <div className="flex flex-wrap gap-2 text-xs text-slate-500">
+                  <span className="rounded-full bg-slate-100 px-3 py-1">{featuredEvent?.date}</span>
+                  <span className="rounded-full bg-slate-100 px-3 py-1">{featuredEvent?.time}</span>
+                </div>
+                <Link href={featuredEvent?.href ?? "/eventos"} className="inline-flex items-center gap-2 text-sm font-medium text-brand">
+                  {featuredEvent?.ctaLabel ?? "Ver agenda"} <ArrowRight className="h-4 w-4" />
                 </Link>
               </Card>
-              <Card className="space-y-3">
+              <Card className="premium-card space-y-3 rounded-[1.75rem] p-6">
                 <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                   <Users className="h-4 w-4 text-brand" />
                   Escuela y comunidad
@@ -107,26 +118,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="public-section space-y-6 py-10">
-        <SectionTitle
-          title="Todo lo que puedes vivir en Padel District Club"
-          description="Reserva pista, compite en torneos, apúntate a eventos y encuentra una escuela adaptada a tu nivel."
-        />
-        <div className="grid gap-6 lg:grid-cols-3">
-          {content.quickLinks.map((item) => (
-            <Card key={item.title} className="flex h-full flex-col justify-between gap-5 rounded-[1.75rem] p-6">
-              <div className="space-y-4">
-                <Badge tone="info">{item.eyebrow}</Badge>
-                <div>
-                  <h3 className="text-2xl font-semibold tracking-tight text-slate-900">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
+      <section className="section-band public-section rounded-[2.25rem] py-10">
+        <div className="space-y-6">
+          <SectionTitle
+            title="Todo lo que puedes vivir en Padel District Club"
+            description="Reserva pista, compite en torneos, apúntate a eventos y encuentra una escuela adaptada a tu nivel."
+          />
+          <div className="grid gap-6 lg:grid-cols-3">
+            {content.quickLinks.map((item, index) => (
+              <Card key={item.title} className="premium-card flex h-full flex-col justify-between gap-5 rounded-[1.75rem] p-6">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <Badge tone="info">{item.eyebrow}</Badge>
+                    {item.metric ? <span className="text-xs font-medium text-slate-500">{item.metric}</span> : null}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight text-slate-900">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>
+                  </div>
                 </div>
-              </div>
-              <Link href={item.href} className="inline-flex items-center gap-2 text-sm font-medium text-brand">
-                Abrir sección <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Card>
-          ))}
+                <Link href={item.href} className="inline-flex items-center gap-2 text-sm font-medium text-brand">
+                  {item.ctaLabel ?? "Abrir sección"} <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -142,7 +158,7 @@ export default function HomePage() {
               { icon: Clock3, text: "Horario amplio con reserva clara por fecha, hora y duración." },
               { icon: Sparkles, text: "Detalles útiles de iluminación, entorno y servicios para elegir mejor." }
             ].map((item) => (
-              <div key={item.text} className="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+              <div key={item.text} className="premium-card flex items-start gap-3 rounded-2xl p-4">
                 <item.icon className="mt-0.5 h-5 w-5 text-brand" />
                 <p className="text-sm leading-6 text-slate-700">{item.text}</p>
               </div>
@@ -154,9 +170,17 @@ export default function HomePage() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {content.featuredCourts.map((court) => (
-            <Card key={court.id} className="flex h-full flex-col gap-5 rounded-[1.75rem] border-slate-200 p-6">
-              <div className="h-40 rounded-[1.5rem] bg-gradient-to-br from-slate-950 via-slate-800 to-emerald-900" />
+          {content.featuredCourts.map((court, index) => (
+            <Card key={court.id} className="premium-card flex h-full flex-col gap-5 rounded-[1.75rem] p-6">
+              <div
+                className={`h-40 rounded-[1.5rem] bg-gradient-to-br ${
+                  index === 0
+                    ? "from-slate-950 via-emerald-900 to-slate-800"
+                    : index === 1
+                      ? "from-slate-950 via-indigo-900 to-slate-800"
+                      : "from-slate-950 via-amber-900 to-slate-800"
+                }`}
+              />
               <div className="space-y-3">
                 <div>
                   <p className="text-sm font-medium text-brand">{court.type}</p>
@@ -204,7 +228,7 @@ export default function HomePage() {
 
           <div className="grid gap-5 md:grid-cols-2">
             {content.tournaments.slice(0, 2).map((tournament) => (
-              <Card key={tournament.id} className="poster-glow border-0 p-0 text-white">
+              <Card key={tournament.id} className="premium-card-dark rounded-[1.75rem] border-0 p-0 text-white">
                 <div className="space-y-5 p-6">
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -221,6 +245,9 @@ export default function HomePage() {
                     <p>{tournament.level}</p>
                     <p>{tournament.price}</p>
                   </div>
+                  <Link href={tournament.href ?? "/torneos"} className="inline-flex items-center gap-2 text-sm font-medium text-emerald-200">
+                    {tournament.ctaLabel ?? "Ver torneo"} <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </Card>
             ))}
@@ -229,7 +256,7 @@ export default function HomePage() {
       </section>
 
       <section className="public-section grid gap-8 py-12 lg:grid-cols-[1fr_1fr]">
-        <Card className="space-y-6 rounded-[2rem] p-8">
+        <Card className="premium-card space-y-6 rounded-[2rem] p-8">
           <div className="flex items-center gap-2 text-sm font-medium text-brand">
             <MapPin className="h-4 w-4" />
             Instalaciones y localización
@@ -259,7 +286,7 @@ export default function HomePage() {
           />
           <div className="grid gap-5">
             {content.testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="rounded-[1.75rem] p-6">
+              <Card key={testimonial.name} className="premium-card rounded-[1.75rem] p-6">
                 <div className="flex items-start gap-4">
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand/10 text-brand">
                     <Star className="h-5 w-5" />
@@ -278,7 +305,7 @@ export default function HomePage() {
       </section>
 
       <section className="public-section pb-6">
-        <Card className="rounded-[2rem] bg-slate-900 p-8 text-white md:p-10">
+        <Card className="premium-card-dark rounded-[2rem] p-8 text-white md:p-10">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="space-y-3">
               <p className="text-sm uppercase tracking-[0.25em] text-emerald-200">Reserva hoy</p>

@@ -26,7 +26,7 @@ const slotLabelMap = {
 export default async function AvailabilityPage() {
   const availability = await getDailyAvailability();
   const pricePreview = await previewReservationPrice();
-  const content = getPublicSiteContent();
+  const content = await getPublicSiteContent();
 
   return (
     <div className="pb-16">

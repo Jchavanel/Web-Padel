@@ -5,7 +5,7 @@ import { getPublicSiteContent } from "@/modules/clubs/services/public-content";
 import { getCurrentUser } from "@/lib/auth/current-user";
 
 export async function SiteHeader() {
-  const content = getPublicSiteContent();
+  const content = await getPublicSiteContent();
   const user = await getCurrentUser();
 
   return (
