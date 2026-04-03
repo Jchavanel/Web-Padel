@@ -16,15 +16,15 @@ export function UpdatePasswordForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const supabase = createClient();
-    if (!supabase) {
+    const client = createClient();
+    if (!client) {
       setErrorMessage("Falta configurar Supabase en la app.");
       return;
     }
 
     let isMounted = true;
 
-    async function prepareRecoverySession() {
+    async function prepareRecoverySession(supabase: NonNullable<ReturnType<typeof createClient>>) {
       const url = new URL(window.location.href);
       const hash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
       const accessToken = hash.get("access_token");
@@ -66,7 +66,7 @@ export function UpdatePasswordForm() {
       }
     }
 
-    void prepareRecoverySession();
+    void prepareRecoverySession(client);
 
     return () => {
       isMounted = false;
