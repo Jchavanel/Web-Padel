@@ -1,23 +1,41 @@
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { getCurrentUser } from "@/lib/auth/current-user";
+import { LoginForm } from "@/modules/auth/components/login-form";
 
-export default function LoginPage() {
+interface LoginPageProps {
+  searchParams?: {
+    redirectTo?: string;
+  };
+}
+
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const user = await getCurrentUser();
+  if (user) {
+    redirect(searchParams?.redirectTo ?? "/mi-panel");
+  }
+
   return (
-    <div className="mx-auto max-w-md">
-      <Card className="space-y-5">
+    <div className="mx-auto max-w-md py-6">
+      <Card className="space-y-6 rounded-[2rem] p-8">
         <div>
-          <h1 className="text-2xl font-semibold">Acceso</h1>
-          <p className="mt-1 text-sm text-slate-600">
-            Accede a tus reservas, partidos y actividad dentro del club.
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand">Área privada</p>
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">Accede a tu cuenta</h1>
+          <p className="mt-2 text-sm leading-6 text-slate-600">
+            Entra para gestionar tus reservas, tus partidos y toda tu actividad dentro del club.
           </p>
         </div>
 
-        <div className="space-y-3">
-          <input className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" placeholder="Email" />
-          <input className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" placeholder="Contraseña" type="password" />
-        </div>
+        <LoginForm redirectTo={searchParams?.redirectTo} />
 
-        <Button className="w-full">Entrar</Button>
+        <p className="text-sm text-slate-600">
+          ¿Todavía no tienes cuenta?{" "}
+          <Link href="/registro" className="font-medium text-brand transition hover:opacity-80">
+            Regístrate aquí
+          </Link>
+          .
+        </p>
       </Card>
     </div>
   );

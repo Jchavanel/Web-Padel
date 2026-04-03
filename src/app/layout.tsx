@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s · Padel District Club"
   },
   description:
-    "Web comercial y operativa para un club de pádel: reservas, pistas, torneos, eventos, escuela y experiencia de club en una sola plataforma."
+    "Club de pádel en Las Palmas con reservas online, torneos, eventos, escuela y comunidad durante todo el año."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

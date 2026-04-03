@@ -7,9 +7,9 @@ export default function ProfilePage() {
       <Card className="space-y-3">
         <h2 className="text-lg font-semibold">Datos personales</h2>
         <div className="grid gap-3 md:grid-cols-2">
-          <input className="rounded-xl border border-slate-200 px-3 py-2 text-sm" defaultValue="Usuario demo" />
+          <input className="rounded-xl border border-slate-200 px-3 py-2 text-sm" defaultValue="Nombre del jugador" />
           <input className="rounded-xl border border-slate-200 px-3 py-2 text-sm" defaultValue="hola@padeldistrictclub.com" />
-          <input className="rounded-xl border border-slate-200 px-3 py-2 text-sm" defaultValue="+34 600 000 000" />
+          <input className="rounded-xl border border-slate-200 px-3 py-2 text-sm" defaultValue="+34 600 123 456" />
           <input className="rounded-xl border border-slate-200 px-3 py-2 text-sm" defaultValue="3.5" />
         </div>
       </Card>

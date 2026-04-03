@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import { SectionTitle } from "@/components/shared/section-title";
 import { getPublicSiteContent } from "@/modules/clubs/services/public-content";
+import { ContactForm } from "@/modules/contact/components/contact-form";
 
 export default function ContactPage() {
   const content = getPublicSiteContent();
@@ -16,7 +17,7 @@ export default function ContactPage() {
             Contacto, reservas de grupo, torneos y escuela
           </h1>
           <p className="max-w-xl text-base leading-7 text-slate-600">
-            Estamos aquí para ayudarte a reservar, apuntarte a un torneo, conocer la escuela o organizar una actividad especial en el club.
+            Estamos aquí para ayudarte a reservar, apuntarte a un torneo, conocer la escuela o preparar una actividad especial en el club.
           </p>
           <div className="grid gap-4">
             <Card className="flex items-start gap-4 rounded-[1.75rem] p-5">
@@ -48,29 +49,7 @@ export default function ContactPage() {
             title="Cuéntanos qué necesitas"
             description="Rellena el formulario y te responderemos lo antes posible. También puedes escribirnos si quieres organizar un evento, pedir información sobre la escuela o reservar para un grupo."
           />
-          <form className="mt-6 grid gap-4">
-            <input className="rounded-xl border border-slate-200 px-4 py-3 text-sm" placeholder="Nombre y apellidos" />
-            <input className="rounded-xl border border-slate-200 px-4 py-3 text-sm" placeholder="Email" />
-            <input className="rounded-xl border border-slate-200 px-4 py-3 text-sm" placeholder="Teléfono" />
-            <select className="rounded-xl border border-slate-200 px-4 py-3 text-sm" defaultValue="reserva">
-              <option value="reserva">Reserva o disponibilidad</option>
-              <option value="torneo">Torneos</option>
-              <option value="evento">Eventos</option>
-              <option value="escuela">Escuela</option>
-              <option value="empresa">Empresas y grupos</option>
-            </select>
-            <textarea className="min-h-36 rounded-xl border border-slate-200 px-4 py-3 text-sm" placeholder="Cuéntanos qué necesitas" />
-            <button type="button" className={buttonVariants({ className: "w-full" })}>
-              <Send className="h-4 w-4" />
-              Enviar solicitud
-            </button>
-          </form>
-
-          <div className="mt-6 rounded-2xl bg-slate-50 p-5 ring-1 ring-slate-200">
-            <p className="text-sm leading-6 text-slate-600">
-              Al enviar este formulario aceptas que usemos tus datos para responder a tu consulta.
-            </p>
-          </div>
+          <ContactForm />
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/disponibilidad" className={buttonVariants({ variant: "outline" })}>

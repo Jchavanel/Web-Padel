@@ -2,11 +2,11 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { clientEnv } from "@/lib/env/client";
 
-export function updateSession(request: NextRequest) {
+export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
   if (!clientEnv.NEXT_PUBLIC_SUPABASE_URL || !clientEnv.NEXT_PUBLIC_SUPABASE_KEY) {
-    return response;
+    return { response, user: null as null };
   }
 
   const supabase = createServerClient(
@@ -31,6 +31,9 @@ export function updateSession(request: NextRequest) {
     }
   );
 
-  void supabase.auth.getUser();
-  return response;
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+
+  return { response, user };
 }

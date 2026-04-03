@@ -2,9 +2,11 @@ import Link from "next/link";
 import { publicNavigation } from "@/lib/constants/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { getPublicSiteContent } from "@/modules/clubs/services/public-content";
+import { getCurrentUser } from "@/lib/auth/current-user";
 
-export function SiteHeader() {
+export async function SiteHeader() {
   const content = getPublicSiteContent();
+  const user = await getCurrentUser();
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-slate-950 text-white shadow-[0_1px_0_rgba(255,255,255,0.05)] backdrop-blur">
@@ -13,7 +15,7 @@ export function SiteHeader() {
           <p>
             {content.city} · {content.schedule}
           </p>
-          <p className="text-emerald-200">Torneos, escuela y reservas todo el año</p>
+          <p className="text-emerald-200">Torneos, escuela y reservas durante toda la semana</p>
         </div>
       </div>
 
@@ -39,8 +41,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link href="/login" className="text-sm text-slate-300 transition hover:text-white">
-            Área privada
+          <Link href={user ? "/mi-panel" : "/login"} className="text-sm text-slate-300 transition hover:text-white">
+            {user ? "Mi cuenta" : "Área privada"}
           </Link>
           <Link href="/disponibilidad" className={buttonVariants({ size: "md" })}>
             Reservar pista

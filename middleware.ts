@@ -12,22 +12,33 @@ const PROTECTED_PREFIXES = [
   "/admin"
 ];
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const isProtected = PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
-  const response = updateSession(request);
+  const authEnabled = process.env.ENABLE_DEMO_AUTH === "true";
+
+  if (authEnabled) {
+    if (!isProtected) {
+      return NextResponse.next();
+    }
+
+    const demoSession = request.cookies.get("demo-session");
+    if (!demoSession) {
+      const loginUrl = new URL("/login", request.url);
+      loginUrl.searchParams.set("redirectTo", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    return NextResponse.next();
+  }
+
+  const { response, user } = await updateSession(request);
 
   if (!isProtected) {
     return response;
   }
 
-  const authEnabled = process.env.ENABLE_DEMO_AUTH === "true";
-  if (!authEnabled) {
-    return response;
-  }
-
-  const demoSession = request.cookies.get("demo-session");
-  if (!demoSession) {
+  if (!user) {
     const loginUrl = new URL("/login", request.url);
     loginUrl.searchParams.set("redirectTo", pathname);
     return NextResponse.redirect(loginUrl);
