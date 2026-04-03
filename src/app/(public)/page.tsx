@@ -109,7 +109,7 @@ export default function HomePage() {
 
       <section className="public-section space-y-6 py-10">
         <SectionTitle
-          title="Todo lo que puedes hacer en Padel District Club"
+          title="Todo lo que puedes vivir en Padel District Club"
           description="Reserva pista, compite en torneos, apúntate a eventos y encuentra una escuela adaptada a tu nivel."
         />
         <div className="grid gap-6 lg:grid-cols-3">
@@ -237,7 +237,7 @@ export default function HomePage() {
           <div className="space-y-4">
             <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Un club pensado para jugar bien y quedarse un rato más</h2>
             <p className="text-sm leading-7 text-slate-600">
-              Vestuarios completos, terraza, cafetería, tienda técnica y espacios preparados para escuela, torneos y activaciones durante toda la semana.
+              Vestuarios completos, terraza, cafetería, tienda técnica y espacios cómodos para entrenar, competir y disfrutar del club durante toda la semana.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -284,7 +284,7 @@ export default function HomePage() {
               <p className="text-sm uppercase tracking-[0.25em] text-emerald-200">Reserva hoy</p>
               <h2 className="text-3xl font-semibold tracking-tight">Reserva hoy y descubre por qué cada semana vuelven más jugadores</h2>
               <p className="max-w-2xl text-sm leading-7 text-slate-300">
-                Elige pista, apúntate a un torneo, encuentra partido o pide información sobre la escuela. Todo desde una misma experiencia clara y rápida.
+                Elige pista, apúntate a un torneo, encuentra partido o pide información sobre la escuela. Todo a un clic para que te resulte fácil volver una y otra vez.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

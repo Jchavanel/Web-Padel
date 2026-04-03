@@ -19,7 +19,7 @@ export default function TournamentsPage() {
               Compite en torneos con organización, ambiente y premios
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-600">
-              Consulta próximas competiciones, categorías, fechas e inscripciones y reserva tu plaza directamente desde la web.
+              Consulta próximas competiciones, categorías, fechas e inscripciones y asegura tu plaza sin perder tiempo.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/contacto" className={buttonVariants({ size: "lg" })}>

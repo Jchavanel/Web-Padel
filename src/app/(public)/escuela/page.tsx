@@ -75,12 +75,12 @@ export default function AcademyPage() {
       <section className="public-section py-10">
         <Card className="rounded-[2rem] border-white/10 bg-slate-950 p-8 text-white md:p-10">
           <SectionTitle
-            title="Empieza en el nivel adecuado y evoluciona con nosotros"
+            title="Empieza en el nivel adecuado y mejora con nosotros"
             description="Cuéntanos tu experiencia, tu edad o tus objetivos y te orientamos hacia el grupo que mejor encaja contigo."
             tone="inverse"
           />
           <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-300">
-            La escuela está preparada para acompañar a jugadores que empiezan, perfiles que quieren mejorar su rendimiento y familias que buscan una actividad estable durante todo el año.
+            La escuela acompaña a quienes empiezan, a jugadores que quieren rendir mejor y a familias que buscan una actividad estable, bien organizada y con buen ambiente durante todo el año.
           </p>
           <Link href="/contacto" className={buttonVariants({ variant: "outline", className: "mt-6 border-white/15 bg-white/5 text-white hover:bg-white/10" })}>
             Quiero información

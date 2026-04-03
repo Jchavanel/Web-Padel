@@ -43,7 +43,7 @@ export default async function AvailabilityPage() {
             <div className="grid gap-4 sm:grid-cols-3">
               {[
                 { icon: CalendarDays, text: "Filtra por fecha, duración y tipo de pista." },
-                { icon: Clock3, text: "Ve estados claros y CTA directos desde la rejilla." },
+                { icon: Clock3, text: "Consulta estados claros y elige tu franja con facilidad." },
                 { icon: ShieldCheck, text: "Precio visible antes de confirmar y estados claros en cada pista." }
               ].map((item) => (
                 <div key={item.text} className="rounded-2xl bg-white p-4 text-sm text-slate-700 shadow-sm ring-1 ring-slate-200">
@@ -120,7 +120,7 @@ export default async function AvailabilityPage() {
                     <td className="px-2 py-4">
                       <div>
                         <p className="font-medium text-slate-900">{court.courtName}</p>
-                        <p className="mt-1 text-xs text-slate-500">Pista preparada para reserva online</p>
+                        <p className="mt-1 text-xs text-slate-500">Lista para reservar</p>
                       </div>
                     </td>
                     {court.slots.map((slot) => (
@@ -136,8 +136,8 @@ export default async function AvailabilityPage() {
 
           <Card className="space-y-5 rounded-[2rem] p-6">
             <SectionTitle
-              title="Preview de reserva"
-              description="Aquí ves el resumen de tu reserva antes de confirmar: pista, horario, tarifa aplicada y precio final."
+              title="Resumen de tu reserva"
+              description="Revisa pista, horario, tarifa y precio final antes de confirmar tu reserva."
             />
 
             <dl className="space-y-3 text-sm">

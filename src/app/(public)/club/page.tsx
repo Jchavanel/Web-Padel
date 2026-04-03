@@ -86,7 +86,7 @@ export default function ClubPage() {
           />
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {[
-              "Instalaciones cuidadas y preparadas para juego, formación y competición.",
+              "Instalaciones cuidadas para jugar, entrenar y competir con comodidad.",
               "Atención todos los días con horario amplio para reservas y actividades.",
               "Un entorno cómodo para venir a jugar y quedarse un rato más en el club."
             ].map((item) => (

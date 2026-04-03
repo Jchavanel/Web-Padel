@@ -8,7 +8,7 @@ export default function LoginPage() {
         <div>
           <h1 className="text-2xl font-semibold">Acceso</h1>
           <p className="mt-1 text-sm text-slate-600">
-            Pantalla placeholder. Sustituir por flujo real con Supabase Auth.
+            Accede a tus reservas, partidos y actividad dentro del club.
           </p>
         </div>
 

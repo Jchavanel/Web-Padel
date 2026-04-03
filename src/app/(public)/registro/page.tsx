@@ -8,7 +8,7 @@ export default function RegisterPage() {
         <div>
           <h1 className="text-2xl font-semibold">Registro</h1>
           <p className="mt-1 text-sm text-slate-600">
-            Formulario inicial para alta de jugadores. Pendiente de conectar a auth real.
+            Crea tu cuenta para reservar pistas, apuntarte a torneos y seguir la actividad del club.
           </p>
         </div>
 

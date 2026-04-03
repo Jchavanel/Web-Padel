@@ -16,10 +16,10 @@ export default async function PricesPage() {
           <div className="space-y-5">
             <p className="text-sm font-medium uppercase tracking-[0.25em] text-brand">Tarifas, bonos y condiciones</p>
             <h1 className="text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-              Precios claros para convertir mejor y reducir fricción en recepción.
+              Tarifas claras para reservar con tranquilidad.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-slate-600">
-              Consulta tarifas claras por franja, tipo de usuario y servicios adicionales para saber cuánto pagarás antes de reservar.
+              Consulta tarifas por franja, tipo de usuario y servicios adicionales para saber cuánto pagarás antes de reservar.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/disponibilidad" className={buttonVariants({ size: "lg" })}>
@@ -32,8 +32,8 @@ export default async function PricesPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              { icon: Receipt, title: "Precio final visible", text: "Antes de confirmar la reserva." },
-              { icon: BadgePercent, title: "Bonos y membresías", text: "Diferenciados para socio y no socio." },
+              { icon: Receipt, title: "Precio final visible", text: "Antes de confirmar tu pista." },
+              { icon: BadgePercent, title: "Bonos y membresías", text: "Opciones pensadas para socios y jugadores habituales." },
               { icon: ShieldCheck, title: "Condiciones claras", text: "Cancelación y límites visibles." }
             ].map((item) => (
               <Card key={item.title} className="rounded-[1.75rem] p-5">
